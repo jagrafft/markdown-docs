@@ -45,6 +45,47 @@ take_random_values =: 3 : 0
 take_random_values 10 NB. => [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L]
 ```
 
+### [Plot][plot]
+```j
+load 'plot'
+
+NB. Hill's Prescription Diet
+NB. c/d Multicare with Chicken
+NB. Dry Cat Food
+NB. https://www.hillspet.com/cat-food/pd-cd-multicare-feline-with-chicken-dry
+NB. accessed 11.01.2021
+
+NB. Adult Maintenance
+NB. cat mass in kilograms
+X =: 2.7 3.6 4.5 5.4 6.4 7.3 8.2
+
+NB. grams of food per day
+Y =: 45 55 70 80 90 100 100
+
+plot_cat_reg =: 4 : 0
+  b =. y %. 1 ,. x
+  xlbl=. 'Cat Mass (kg)'
+  ylbl=. 'g Food/Day'
+  tittxt=. 'Cat Mass Regression'
+  keytxt=. 'Rec.,Est.'
+  pd 'reset'
+  pd 'title ',tittxt
+  pd 'xcaption ',xlbl
+  pd 'ycaption ',ylbl
+  pd 'key ',keytxt
+  pd 'keystyle marker'
+  pd 'keycolor gray'
+  pd 'itemcolor gray'
+  pd 'keymarkers circle,line'
+  pd 'type marker'
+  pd 'markers circle'
+  pd x;y
+  pd 'type line'
+  pd x;b p. x
+  pd 'show'
+)
+```
+
 ### [Valence][valence]: Monadic, Dyadic, and Ambivalent functions
 ```j
 u =: 1 + i.5
@@ -84,4 +125,5 @@ v a u NB. => 11 6 4.33333 3.5 3
 
 [jddb]: https://code.jsoftware.com/wiki/Jd/Index
 [jsoftware]: https://www.jsoftware.com/
+[plot]: https://code.jsoftware.com/wiki/Plot
 [valence]: https://code.jsoftware.com/wiki/Vocabulary/Valence
