@@ -45,7 +45,16 @@ take_random_values =: 3 : 0
 take_random_values 10 NB. => [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L]
 ```
 
-### [Plot][plot]
+### Zip Two Arrays
+```j
+X =: 1 + i.6
+Y =: 10 + i.6
+
+X ,&; each Y NB. => (1,10) ; (2,11) ; (3,12) ; (4,13) ; (5,14) ; (6,15)
+```
+
+
+## [Plot][plot]
 ```j
 load 'plot'
 
@@ -86,7 +95,7 @@ plot_cat_reg =: 4 : 0
 )
 ```
 
-### [Valence][valence]: Monadic, Dyadic, and Ambivalent functions
+## [Valence][valence]: Monadic, Dyadic, and Ambivalent functions
 ```j
 u =: 1 + i.5
 v =: 10 + u
