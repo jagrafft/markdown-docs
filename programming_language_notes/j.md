@@ -8,6 +8,32 @@ X =: 1 2 ; 3 4 ; 5 6
 f X NB. => _1 _1 _1
 ```
 
+### Conversion Examples
+#### Type (`3!:0`)
+See <https://www.jsoftware.com/help/dictionary/dx003.htm>.
+
+```j
+3!:0 'w00t'    NB. => 2 (literal)
+3!:0 (3)       NB. => 4 (integer)
+3!:0 (3.5)     NB. => 8 (floating point)
+```
+
+#### To Literal (`":`)
+```j
+3!:0 (77.89)        NB. => 8 (floating point)
+3!:0 (": 77.89)     NB. => 2 (literal)
+3!:0 (": 77 8 9)    NB. => 2 (literal)
+
+w =: 'w00t--'
+w , 77          NB. => domain error
+w ,": 77        NB. => w00t--77
+w ,": 77.89     NB. => w00t--77.89
+w ,": 77 8 9    NB. => w00t--77 8 9
+<w ,": 77 8 9   NB. => ┌────────────┐
+                       │w00t--77 8 9│
+                       └────────────┘
+```
+
 ### Slice
 ```j
 u =: 1 + i.10 NB. => 1 2 3 4 5 6 7 8 9 10
@@ -45,16 +71,7 @@ take_random_values =: 3 : 0
 take_random_values 10 NB. => [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L] [A-L]
 ```
 
-### Zip Two Arrays
-```j
-X =: 1 + i.6
-Y =: 10 + i.6
-
-X ,&; each Y NB. => (1,10) ; (2,11) ; (3,12) ; (4,13) ; (5,14) ; (6,15)
-```
-
-
-## [Plot][plot]
+### [Plot][plot]
 ```j
 load 'plot'
 
@@ -95,7 +112,7 @@ plot_cat_reg =: 4 : 0
 )
 ```
 
-## [Valence][valence]: Monadic, Dyadic, and Ambivalent functions
+### [Valence][valence]: Monadic, Dyadic, and Ambivalent functions
 ```j
 u =: 1 + i.5
 v =: 10 + u
